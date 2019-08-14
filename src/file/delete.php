@@ -1,6 +1,7 @@
 <?php
 
 use MyFiles\Utils\DB;
+use MyFiles\Utils\Filesystem;
 
 $id = DB::getInstance()->escape(explode('/', $_SERVER['REQUEST_URI'])[3]);
 
@@ -8,7 +9,7 @@ $sql = "SELECT * FROM files WHERE id='$id'";
 $result = DB::getInstance()->query($sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
-$filepath = APP_PATH."/storage/{$row['uniqid']}/{$row['name']}";
+$filepath = APP_PATH."/storage/{$row['uniqid']}";
 
 if (empty($row)) {
     http_response_code(404);
@@ -21,8 +22,9 @@ if (empty($row)) {
 } elseif (file_exists($filepath)) {
     $sql = "DELETE FROM files WHERE id='$id'";
     DB::getInstance()->query($sql);
+    Filesystem::rrmdir(APP_PATH."/storage/{$row['uniqid']}");
     http_response_code(200);
-    $body = ['message' => 'Bad Success'];
+    $body = ['message' => 'Success'];
     print_r(json_encode($body, true));
 }
 

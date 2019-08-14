@@ -12,7 +12,7 @@ define('APP_PATH', realpath(dirname(__FILE__) . '/../'));
 $dotenv = \Dotenv\Dotenv::create(__DIR__.'/../');
 $dotenv->load();
 
-Filesystem::rrmdir(APP_PATH.'/storage');
+Filesystem::rmDir(APP_PATH.'/storage');
 
 $sql = file_get_contents(APP_PATH.'/docker/mysql/database.sql');
 

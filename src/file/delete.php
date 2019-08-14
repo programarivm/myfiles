@@ -22,7 +22,7 @@ if (empty($row)) {
 } elseif (file_exists($filepath)) {
     $sql = "DELETE FROM files WHERE id='$id'";
     DB::getInstance()->query($sql);
-    Filesystem::rrmdir(APP_PATH."/storage/{$row['uniqid']}");
+    Filesystem::rmDir(APP_PATH."/storage/{$row['uniqid']}");
     http_response_code(200);
     $body = ['message' => 'Success'];
     print_r(json_encode($body, true));

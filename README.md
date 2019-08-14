@@ -2,13 +2,18 @@
 
 Simple file manager -- no MVC framework is used, PHP code only.
 
-### 1. Set up the Environment
+### 1. Build the Docker Containers
 
-Find the IP of the mysql container:
+    docker-compose up --build
+
+### 2. Set up the Environment
+
+Find the IP of the mysql and nginx containers:
 
     docker inspect myfiles_mysql
+    docker inspect myfiles_nginx
 
-Copy the following `.env` file into the app's root directory:
+Copy the following `.env` into the app's root directory:
 
     MYFILES_NGINX_HOST=172.20.0.1
 
@@ -18,7 +23,7 @@ Copy the following `.env` file into the app's root directory:
     DB_USERNAME=root
     DB_PASSWORD=password
 
-### 2. Generate the SSL Certificate
+### 3. Generate the SSL Certificate
 
     cd docker/nginx/ssl
     openssl genrsa -des3 -out myfiles.work.pem 2048
@@ -26,17 +31,9 @@ Copy the following `.env` file into the app's root directory:
     openssl x509 -req -days 365 -in myfiles.work.csr -signkey myfiles.work.pem -out myfiles.work.crt
     openssl rsa -in myfiles.work.pem -out myfiles.work.key
 
-### 3. Build the Docker Containers
-
-    docker-compose up --build
-
 ### 4. Local Set up
 
-Find the IP of the nginx container:
-
-    docker inspect myfiles_nginx
-
-And add the following entry to your `/etc/hosts` file:
+Add the following entry to your `/etc/hosts` file:
 
     172.20.0.1      myfiles.work
 

@@ -4,8 +4,15 @@ Simple file manager -- no MVC framework is used, PHP code only.
 
 ### 1. Set up the Environment
 
-`.env` file:
+Find the IP of the mysql container:
 
+    docker inspect myfiles_mysql
+
+Copy the following `.env` file into the app's root directory:
+
+    MYFILES_NGINX_HOST=172.20.0.1
+
+    DB_SERVER=172.20.0.1
     DB_DATABASE=myfiles
     DB_ROOT_PASSWORD=password
     DB_USERNAME=root

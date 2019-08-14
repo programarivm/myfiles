@@ -1,8 +1,12 @@
 <?php
 
+use MyFiles\DB;
+
 header('Content-type: application/json');
 
 if (move_uploaded_file($_FILES['myfile']['tmp_name'], APP_PATH.'/storage/'.$_FILES['myfile']['name'])) {
+    DB::getInstance();
+    // TODO ...
     http_response_code(200);
     $body = ['message' => 'Success'];
 } else {

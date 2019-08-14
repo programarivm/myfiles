@@ -1,0 +1,9 @@
+# misc
+.env
+
+# php
+/composer.lock
+/vendor/
+
+# docker
+/docker/ssl/

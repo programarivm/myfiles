@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  php_fpm:
+      build: .
+      container_name: myfiles_php_fpm
+      restart: always
+      working_dir: /usr/share/nginx/myfiles
+      networks:
+          - myfiles
+      volumes:
+          - ./:/usr/share/nginx/myfiles
+          - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+
+  nginx:
+      image: nginx:1.15
+      container_name: myfiles_nginx
+      restart: always
+      working_dir: /usr/share/nginx/myfiles
+      networks:
+          - myfiles
+      ports:
+          - "443:443"
+      volumes:
+          - ./:/usr/share/nginx/myfiles
+          - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+          - ./docker/nginx/ssl/myfiles.work.crt:/etc/nginx/ssl/myfiles.work.crt
+          - ./docker/nginx/ssl/myfiles.work.key:/etc/nginx/ssl/myfiles.work.key
+
+  mysql:
+      image: mysql:8.0
+      container_name: myfiles_mysql
+      restart: always
+      networks:
+          - myfiles
+      volumes:
+          - ./docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      ports:
+          - "3306:3306"
+      environment:
+          - MYSQL_DATABASE=${DB_DATABASE}
+          - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+          - MYSQL_USER=${DB_USERNAME}
+          - MYSQL_PASSWORD=${DB_PASSWORD}
+
+networks:
+  myfiles:
+    driver: bridge

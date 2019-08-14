@@ -1,6 +1,6 @@
 # myfiles
 
-Simple file manager.
+Simple file manager -- no MVC framework is used, PHP code only.
 
 ### 1. Set up the Environment
 
@@ -32,6 +32,11 @@ Find the IP of the nginx container:
 And add the following entry to your `/etc/hosts` file:
 
     172.20.0.1      myfiles.work
+
+Set up file permissions:
+
+    chmod 775 -R storage
+    chown -R standard:www-data storage
 
 ### 5. Run the Tests
 

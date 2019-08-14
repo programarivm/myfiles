@@ -12,9 +12,19 @@ class HttpStatus200Test extends HttpTest
      */
     public function http_status_200()
     {
-        $fileContent = file_get_contents(__DIR__.'/data/http_status_200/foo.txt');
+        $filepath = __DIR__.'/data/http_status_200/foo.txt';
+        $fileContent = file_get_contents($filepath);
 
-        $response = self::$client->post('file/upload.php');
+        $response = self::$client->post('file/upload', [
+            'multipart' => [
+                [
+                    'name'     => 'myfile',
+                    'filename' => basename($filepath),
+                    'Mime-Type'=> mime_content_type($filepath),
+                    'contents' => $fileContent,
+                ],
+            ]
+        ]);
 
         $expected = '{"message":"Success"}';
 

@@ -13,5 +13,8 @@
     "require-dev": {
         "guzzlehttp/guzzle": "~6.0",
         "phpunit/phpunit": "^7"
+    },
+    "require": {
+        "vlucas/phpdotenv": "^3.4"
     }
 }

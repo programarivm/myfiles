@@ -1,3 +1,3 @@
 <?php
 
-echo 'It works! Please be patient.';
+echo 'foo';

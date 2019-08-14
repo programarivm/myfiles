@@ -11,6 +11,8 @@ services:
       volumes:
           - ./:/usr/share/nginx/myfiles
           - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      extra_hosts:
+          - "myfiles.work:${MYFILES_NGINX_HOST}"
 
   nginx:
       image: nginx:1.15

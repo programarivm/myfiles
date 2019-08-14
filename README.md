@@ -23,6 +23,16 @@ Simple file manager.
 
     docker-compose up --build
 
-### 4. Run the Tests
+### 4. Local Set up
+
+Find the IP of the nginx container:
+
+    docker inspect myfiles_nginx
+
+And add the following entry to your `/etc/hosts` file:
+
+    172.20.0.1      myfiles.work
+
+### 5. Run the Tests
 
     docker exec -it --user 1000:1000 myfiles_php_fpm php vendor/bin/phpunit tests

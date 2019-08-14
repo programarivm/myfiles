@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.5"
 
 services:
   php_fpm:
@@ -28,7 +28,7 @@ services:
           - ./docker/nginx/ssl/myfiles.work.key:/etc/nginx/ssl/myfiles.work.key
 
   mysql:
-      image: mysql:8.0
+      image: mysql:5.7
       container_name: myfiles_mysql
       restart: always
       networks:

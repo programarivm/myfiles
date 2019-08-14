@@ -38,6 +38,11 @@ Set up file permissions:
     chmod 775 -R storage
     chown -R standard:www-data storage
 
+Create the database tables:
+
+    docker exec -it myfiles_mysql /bin/bash
+    mysql -p -u root myfiles < /home/database.sql
+
 ### 5. Run the Tests
 
     docker exec -it --user 1000:1000 myfiles_php_fpm php vendor/bin/phpunit tests

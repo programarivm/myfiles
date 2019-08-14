@@ -37,6 +37,7 @@ services:
           - myfiles
       volumes:
           - ./docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+          - ./docker/mysql/database.sql:/home/database.sql
       ports:
           - "3306:3306"
       environment:

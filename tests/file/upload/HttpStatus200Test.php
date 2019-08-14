@@ -20,7 +20,6 @@ class HttpStatus200Test extends HttpTest
                 [
                     'name'     => 'myfile',
                     'filename' => basename($filepath),
-                    'Mime-Type'=> mime_content_type($filepath),
                     'contents' => $fileContent,
                 ],
             ]

@@ -22,3 +22,7 @@ Simple file manager.
 ### 3. Build the Docker Containers
 
     docker-compose up --build
+
+### 4. Run the Tests
+
+    docker exec -it --user 1000:1000 myfiles_php_fpm php vendor/bin/phpunit tests

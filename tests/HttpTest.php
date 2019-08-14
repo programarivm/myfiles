@@ -15,8 +15,6 @@ abstract class HttpTest extends TestCase
     {
         self::$client = new Client([
             'base_uri' => self::BASE_URI,
-            'verify' => false,
-            // 'timeout'  => 2.0,
         ]);
     }
 }

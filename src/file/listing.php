@@ -1,6 +1,6 @@
 <?php
 
-use MyFiles\DB;
+use MyFiles\Utils\DB;
 
 $sql = "SELECT * FROM files;";
 $result = DB::getInstance()->query($sql);

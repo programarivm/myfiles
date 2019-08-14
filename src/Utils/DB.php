@@ -1,6 +1,6 @@
 <?php
 
-namespace MyFiles;
+namespace MyFiles\Utils;
 
 class DB
 {
@@ -50,6 +50,11 @@ class DB
     public function query($sql)
     {
         return $this->mysqli->query($sql);
+    }
+
+    public function multiQuery($sql)
+    {
+        return $this->mysqli->multi_query($sql);
     }
 
     public function escape($data)

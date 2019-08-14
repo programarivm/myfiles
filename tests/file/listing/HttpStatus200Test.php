@@ -13,16 +13,21 @@ class HttpStatus200Test extends HttpTest
     {
         $response = self::$client->get('file/listing');
 
-        $expected = json_encode([
+        $expected = [
             [
                 'id' => '1',
                 'name' => 'foo.txt',
                 'mimetype' => 'text/plain',
                 'created_at' => '2019-01-01 00:00:00',
             ],
-        ]);
+        ];
+
+        $contents = json_decode($response->getBody()->getContents(), true);
+
+        $uniqid = $contents[0]['uniqid'];
+        unset($contents[0]['uniqid']);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals($expected, $response->getBody()->getContents());
+        $this->assertEquals($expected, $contents);
     }
 }

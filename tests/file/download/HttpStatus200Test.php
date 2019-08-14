@@ -8,10 +8,11 @@ class HttpStatus200Test extends HttpTest
 {
     /**
      * @test
+     * @dataProvider data
      */
-    public function http_status_200()
+    public function http_status_200($id)
     {
-        $response = self::$client->get('file/download/1');
+        $response = self::$client->get("file/download/$id");
 
         $contents = $response->getBody()->getContents();
 
@@ -19,5 +20,18 @@ class HttpStatus200Test extends HttpTest
         $this->assertEquals('application/octet-stream', $response->getHeaders()['Content-Type'][0]);
         $this->assertEquals('Binary', $response->getHeaders()['Content-Transfer-Encoding'][0]);
         $this->assertEquals('attachment; filename="foo.txt"', $response->getHeaders()['Content-disposition'][0]);
+    }
+
+    public function data()
+    {
+        $data = [];
+        $queryStrings = json_decode(file_get_contents(__DIR__ . '/data/http_status_200.json'))->queryString;
+        foreach ($queryStrings as $queryString) {
+            $data[] = [
+                $queryString->id,
+            ];
+        }
+
+        return $data;
     }
 }

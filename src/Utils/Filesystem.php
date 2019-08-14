@@ -26,7 +26,7 @@ class Filesystem
         }
 
         foreach (scandir($path) as $file) {
-            if (!in_array($file, array('.','..','.svn','.git'))) {
+            if (!in_array($file, ['.','..'])) {
                 return false;
             }
         }

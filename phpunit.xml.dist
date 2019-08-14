@@ -11,5 +11,8 @@
         <testsuite name="file/listing">
             <directory>tests/file/listing</directory>
         </testsuite>
+        <testsuite name="file/download">
+            <directory>tests/file/download</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

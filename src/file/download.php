@@ -11,7 +11,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
     exit;
 }
 
-$sql = "SELECT * FROM files WHERE id='$id'";
+$sql = "SELECT * FROM files WHERE id=$id";
 $result = DB::getInstance()->query($sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 

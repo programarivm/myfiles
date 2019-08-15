@@ -12,7 +12,7 @@ if (!filter_var($id, FILTER_VALIDATE_INT)) {
     exit;
 }
 
-$sql = "SELECT * FROM files WHERE id='$id'";
+$sql = "SELECT * FROM files WHERE id=$id";
 $result = DB::getInstance()->query($sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -23,7 +23,7 @@ if (empty($row)) {
     $body = ['message' => 'Not Found'];
     print_r(json_encode($body, true));
 } elseif (file_exists($filepath)) {
-    $sql = "DELETE FROM files WHERE id='$id'";
+    $sql = "DELETE FROM files WHERE id=$id";
     DB::getInstance()->query($sql);
     Filesystem::rmDir(APP_PATH."/storage/{$row['uniqid']}");
     http_response_code(200);

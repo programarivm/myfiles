@@ -14,6 +14,9 @@
         <testsuite name="file/download">
             <directory>tests/file/download</directory>
         </testsuite>
+        <testsuite name="file/space">
+            <directory>tests/file/space</directory>
+        </testsuite>
         <testsuite name="file/delete">
             <file>tests/file/delete/HttpStatus400Test.php</file>
             <file>tests/file/delete/HttpStatus404Test.php</file>

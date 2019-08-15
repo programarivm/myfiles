@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS files (
     name VARCHAR(64) NOT NULL,
     mimetype VARCHAR(64) NOT NULL,
     uniqid VARCHAR(16) NOT NULL,
+    size int UNSIGNED NOT NULL,
     created_at DATETIME DEFAULT '2019-01-01 00:00:00',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB;

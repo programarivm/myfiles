@@ -18,6 +18,7 @@ class HttpStatus200Test extends HttpTest
                 'id' => '1',
                 'name' => 'foo.txt',
                 'mimetype' => 'text/plain',
+                'size' => 12,
                 'created_at' => '2019-01-01 00:00:00',
             ],
         ];

@@ -14,9 +14,7 @@ class HttpStatus200Test extends HttpTest
         $response = self::$client->get('file/space');
 
         $expected = [
-            [
-                'used' => '12',
-            ],
+            'used' => '12',
         ];
 
         $contents = json_decode($response->getBody()->getContents(), true);

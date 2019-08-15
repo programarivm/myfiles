@@ -14,6 +14,8 @@ switch (true) {
         require_once APP_PATH.'/src/file/download.php';
     case '/file/listing' === $_SERVER['REQUEST_URI'] :
         require_once APP_PATH.'/src/file/listing.php';
+    case '/file/space' === $_SERVER['REQUEST_URI'] :
+        require_once APP_PATH.'/src/file/space.php';
     case '/file/upload' === $_SERVER['REQUEST_URI'] :
         require_once APP_PATH.'/src/file/upload.php';
 }

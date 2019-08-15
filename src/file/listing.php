@@ -2,9 +2,8 @@
 
 use MyFiles\Utils\DB;
 
-$sql = "SELECT * FROM files;";
+$sql = "SELECT * FROM files";
 $result = DB::getInstance()->query($sql);
-
 $rows = [];
 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
     $rows[] = $row;

@@ -3,7 +3,6 @@
 use MyFiles\Utils\DB;
 
 $uniqid = uniqid();
-
 if (mkdir(APP_PATH."/storage/$uniqid", 0775, true)) {
     if (move_uploaded_file($_FILES['myfile']['tmp_name'], APP_PATH."/storage/$uniqid/".$_FILES['myfile']['name'])) {
         $name = DB::getInstance()->escape($_FILES['myfile']['name']);

@@ -2,6 +2,10 @@
 
 Simple file manager -- no MVC framework is used, PHP code only.
 
+> TODOs:
+
+    - After adding `Nonceshield` the tests are throwing a 403 Forbidden error -- make them pass
+
 ### 1. Build the Docker Containers
 
     docker-compose up --build

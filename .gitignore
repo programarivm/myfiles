@@ -1,2 +1,4 @@
 # myfiles
 /data/output.csv
+/composer.lock
+/vendor/

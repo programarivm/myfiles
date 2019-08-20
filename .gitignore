@@ -1,12 +1,2 @@
 # myfiles
-/storage/
-
-# misc
-.env
-
-# php
-/composer.lock
-/vendor/
-
-# docker
-/docker/ssl/
+/data/output.csv

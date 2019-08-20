@@ -2,6 +2,11 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use NonceShield\Nonce;
+
+session_start();
+(new Nonce)->validateToken();
+
 define('APP_PATH', realpath(dirname(__FILE__) . '/../'));
 
 $dotenv = \Dotenv\Dotenv::create(__DIR__.'/../');

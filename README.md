@@ -15,13 +15,15 @@ Find the IP of the mysql and nginx containers:
 
 Copy the following `.env` into the app's root directory:
 
-    MYFILES_NGINX_HOST=172.20.0.1
-
     DB_SERVER=172.20.0.1
     DB_DATABASE=myfiles
     DB_ROOT_PASSWORD=password
     DB_USERNAME=root
     DB_PASSWORD=password
+
+    MYFILES_NGINX_HOST=172.20.0.1
+
+    NONCE_KEY=5ZLXPORAl39jMH5ujR53jNZ3uLpNcz9跡
 
 ### 3. Generate the SSL Certificate
 
